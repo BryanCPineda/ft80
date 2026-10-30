@@ -1,23 +1,18 @@
+const { pool } = require("../config/dbConnect")
 
-const productos = [
-  {
-    id: 1,
-    name: 'producto 1',
-    price: 128736
-  },
-  {
-    id: 2,
-    name: 'producto 2',
-    price: 23434
-  }
-]
-
-
-const getProductoService = () => {
-    return productos
+const getProductoService = async () => {
+  const respuesta = await pool.query(`SELECT * FROM productos`)
+  return respuesta.rows
 }
 
+const createdProductService = async (infoProducto) => {
+
+  const respuesta = await pool.query(`INSERT INTO productos(name, price) VALUES ($1, $2)`, [infoProducto.name, infoProducto.price])
+  return respuesta.rows
+
+}
 
 module.exports = {
-  getProductoService
+  getProductoService,
+  createdProductService
 }

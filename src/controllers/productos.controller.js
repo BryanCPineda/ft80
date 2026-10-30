@@ -5,7 +5,7 @@
  * *   3. contestar al cliente - res.status().json()
  */
 
-const { getProductoService } = require("../services/productos.service")
+const { getProductoService, createdProductService } = require("../services/productos.service")
 
 
 const healthyController = (req, res) => {
@@ -14,17 +14,37 @@ const healthyController = (req, res) => {
     })
 }
 
-const getProductosController = (req, res) => {
-    const productos = getProductoService()
-    res.status(200).json({
-      msg: 'informacion de los productos',
-      data: productos
-    })
+const getProductosController = async (req, res) => {
+
+    try {
+      const productos = await getProductoService()
+      res.status(200).json({
+        msg: 'informacion de los productos',
+        data: productos
+      })
+    } catch (error) {
+      res.status(500).json({
+        msg: 'error del servidor',
+        error: error.message
+      })
+    }
+
+}
+
+const createdProductController = async (req, res) => {
+
+  const respuesta = await createdProductService(req.body)
+  
+  res.status(201).json({
+    msg: 'producto creado con exito',
+  })
+
 }
 
 module.exports = {
   healthyController,
-  getProductosController
+  getProductosController,
+  createdProductController
 }
 
 
