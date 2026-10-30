@@ -15,6 +15,8 @@ const DB_MAX = process.env.DB_MAX
 const DB_IDLETIMEOUTMILLIS = process.env.DB_IDLETIMEOUTMILLIS
 const DB_CONNECTIONTIMEOUT = process.env.DB_CONNECTIONTIMEOUT
 
+const DATABASE_URL = process.env.DATABASE_URL
+
 
 module.exports = {
   PORT,
@@ -26,4 +28,5 @@ module.exports = {
   DB_MAX,
   DB_IDLETIMEOUTMILLIS,
   DB_CONNECTIONTIMEOUT,
+  DATABASE_URL
 }
