@@ -13,7 +13,11 @@ const swaggerDocument = {
 		{
 			url: `http://localhost:${port}`,
 			description: "Servidor local"
-		}
+		},
+    {
+      url: `https://ft80-production.up.railway.app`,
+      description: "Servidor en railway"
+    }
 	],
 	tags: [
 		{
