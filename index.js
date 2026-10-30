@@ -1,11 +1,9 @@
 //* RESPONSABILIDAD: levantar el servidor
 
-const { pool } = require("./src/config/dbConnect")
+const { pool } = require("./src/config/dbConnect");
+const { PORT } = require("./src/config/envs");
 const { initializeDB } = require("./src/config/initDb")
 const { server } = require("./src/server")
-
-const { loadEnvFile } = require("node:process")
-loadEnvFile(".env")
 
 async function startServer(){
   try {
@@ -14,8 +12,8 @@ async function startServer(){
 
       await initializeDB()
 
-      server.listen( process.env.PORT, () => {
-          console.log(`Server listen on port ${process.env.PORT}`)
+      server.listen( PORT, () => {
+          console.log(`Server listen on port ${PORT}`)
       })
 
 
