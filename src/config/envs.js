@@ -1,7 +1,7 @@
 const { loadEnvFile } = require("node:process")
 
 
-if(process.env.NODE_EV != 'production'){
+if(process.env.NODE_ENV != 'production'){
   loadEnvFile(".env")
 }
 
